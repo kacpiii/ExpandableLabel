@@ -136,9 +136,15 @@ open class ExpandableLabel: UILabel {
     fileprivate func commonInit() {
         self.isUserInteractionEnabled = true
         self.lineBreakMode = .byClipping
-        self.numberOfLines = 3
-        self.expandedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_less", comment: ""), attributes: [.font: UIFont.boldSystemFont(ofSize: font.pointSize)])
-        self.collapsedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_more", comment: ""), attributes: [.font: UIFont.boldSystemFont(ofSize: font.pointSize)])
+        self.numberOfLines = 4
+        
+        let attributes = [
+            NSAttributedStringKey.foregroundColor: UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1.0),
+            NSAttributedStringKey.font: UIFont(name:"OpenSans", size: 13.0)!
+        ]
+        
+        self.expandedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_less", comment: ""), attributes: attributes)
+        self.collapsedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_more", comment: ""), attributes: attributes)
         self.ellipsis = NSAttributedString(string: "...")
     }
     
