@@ -145,7 +145,7 @@ open class ExpandableLabel: UILabel {
         
         self.expandedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_less", comment: ""), attributes: attributes)
         self.collapsedAttributedLink = NSAttributedString(string: NSLocalizedString("feed_cell_show_more", comment: ""), attributes: attributes)
-        self.ellipsis = NSAttributedString(string: "...")
+        self.ellipsis = NSAttributedString(string: " ...")
     }
     
     open override var text: String? {
