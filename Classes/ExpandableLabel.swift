@@ -207,6 +207,30 @@ open class ExpandableLabel: UILabel {
     }
     
     fileprivate func textReplaceWithLink(_ lineIndex: LineIndexTuple, text: NSAttributedString, linkName: NSAttributedString) -> NSAttributedString {
+        
+        let lineText = text.text(for: lineIndex.line)
+        var lineTextWithLink = lineText
+        (lineText.string as NSString).enumerateSubstrings(in: NSRange(location: 0, length: lineText.length), options: [.reverse, .byLines]) { (word, subRange, enclosingRange, stop) -> Void in
+            let lineTextWithLastWordRemoved = lineText.attributedSubstring(from: NSRange(location: 0, length: subRange.location))
+            let lineTextWithAddedLink = NSMutableAttributedString(attributedString: lineTextWithLastWordRemoved)
+            if let ellipsis = self.ellipsis {
+                lineTextWithAddedLink.append(ellipsis)
+                lineTextWithAddedLink.append(NSAttributedString(string: " ", attributes: [.font: self.font]))
+            }
+            lineTextWithAddedLink.append(linkName)
+            let fits = self.textFitsWidth(lineTextWithAddedLink)
+            if fits {
+                lineTextWithLink = lineTextWithAddedLink
+                let lineTextWithLastWordRemovedRect = lineTextWithLastWordRemoved.boundingRect(for: self.frame.size.width)
+                let wordRect = linkName.boundingRect(for: self.frame.size.width)
+                let width = lineTextWithLastWordRemoved.string == "" ? self.frame.width : wordRect.size.width
+                self.linkRect = CGRect(x: lineTextWithLastWordRemovedRect.size.width, y: self.font.lineHeight * CGFloat(lineIndex.index), width: width, height: wordRect.size.height)
+                stop.pointee = true
+            }
+        }
+        return lineTextWithLink
+        
+        /*
         let lineText = text.text(for: lineIndex.line)
         let lineTextTrimmedNewLines = NSMutableAttributedString()
         lineTextTrimmedNewLines.append(lineText)
@@ -228,6 +252,7 @@ open class ExpandableLabel: UILabel {
         let lineTextWithLink = NSMutableAttributedString(attributedString: truncatedString)
         lineTextWithLink.append(linkText)
         return lineTextWithLink
+        */
     }
     
     fileprivate func getExpandedText(for text: NSAttributedString?, link: NSAttributedString?) -> NSAttributedString? {
