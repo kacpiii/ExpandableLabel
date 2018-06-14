@@ -24,6 +24,7 @@
 typealias LineIndexTuple = (line: CTLine, index: Int)
 
 import UIKit
+import ActiveLabel
 
 /**
  * The delegate of ExpandableLabel.
@@ -39,7 +40,7 @@ public protocol ExpandableLabelDelegate: NSObjectProtocol {
 /**
  * ExpandableLabel
  */
-open class ExpandableLabel: UILabel {
+open class ExpandableLabel: ActiveLabel {
     
     public enum TextReplacementType {
         case character
@@ -47,7 +48,7 @@ open class ExpandableLabel: UILabel {
     }
     
     /// The delegate of ExpandableLabel
-    weak open var delegate: ExpandableLabelDelegate?
+    weak open var expandableDelegate: ExpandableLabelDelegate?
     
     /// Set 'true' if the label should be collapsed or 'false' for expanded.
     @IBInspectable open var collapsed: Bool = true {
@@ -361,17 +362,17 @@ open class ExpandableLabel: UILabel {
             }
             
             if shouldCollapse && ExpandableLabel.isTouchInLabelRange(touch: touch, label: self, inRange: range) {
-                delegate?.willCollapseLabel(self)
+                expandableDelegate?.willCollapseLabel(self)
                 collapsed = true
-                delegate?.didCollapseLabel(self)
+                expandableDelegate?.didCollapseLabel(self)
                 linkHighlighted = isHighlighted
                 setNeedsDisplay()
             }
         } else {
             if shouldExpand && setLinkHighlighted(touches, event: event, highlighted: false) {
-                delegate?.willExpandLabel(self)
+                expandableDelegate?.willExpandLabel(self)
                 collapsed = false
-                delegate?.didExpandLabel(self)
+                expandableDelegate?.didExpandLabel(self)
             }
         }
     }

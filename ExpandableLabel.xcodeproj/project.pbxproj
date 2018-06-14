@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1B0D8A521F3AAA6C004142A4 /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0D8A501F3AAA6C004142A4 /* ExpandableLabel.swift */; };
+		2AB87B3A1C50EA17647AC01B /* Pods_ExpandableLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA18A94781E83B9E3BEA12CD /* Pods_ExpandableLabel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B0D8A441F3AAA50004142A4 /* ExpandableLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExpandableLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B0D8A501F3AAA6C004142A4 /* ExpandableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
 		1B0D8A511F3AAA6C004142A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D438C997147D4C732445AE18 /* Pods-ExpandableLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpandableLabel.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpandableLabel/Pods-ExpandableLabel.release.xcconfig"; sourceTree = "<group>"; };
+		D968C7B03A273DB93D6CD6DE /* Pods-ExpandableLabel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpandableLabel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpandableLabel/Pods-ExpandableLabel.debug.xcconfig"; sourceTree = "<group>"; };
+		FA18A94781E83B9E3BEA12CD /* Pods_ExpandableLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpandableLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +25,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB87B3A1C50EA17647AC01B /* Pods_ExpandableLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A8150A424843FBDBAC4D33F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D968C7B03A273DB93D6CD6DE /* Pods-ExpandableLabel.debug.xcconfig */,
+				D438C997147D4C732445AE18 /* Pods-ExpandableLabel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1B0D8A3A1F3AAA50004142A4 = {
 			isa = PBXGroup;
 			children = (
 				1B0D8A4F1F3AAA6C004142A4 /* Classes */,
 				1B0D8A451F3AAA50004142A4 /* Products */,
+				0A8150A424843FBDBAC4D33F /* Pods */,
+				6F8EC83C132E811165B453A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +68,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		6F8EC83C132E811165B453A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA18A94781E83B9E3BEA12CD /* Pods_ExpandableLabel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -69,10 +93,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B0D8A4C1F3AAA50004142A4 /* Build configuration list for PBXNativeTarget "ExpandableLabel" */;
 			buildPhases = (
+				A2774BE3D1EDC8B1616B8D0A /* [CP] Check Pods Manifest.lock */,
 				1B0D8A3F1F3AAA50004142A4 /* Sources */,
 				1B0D8A401F3AAA50004142A4 /* Frameworks */,
 				1B0D8A411F3AAA50004142A4 /* Headers */,
 				1B0D8A421F3AAA50004142A4 /* Resources */,
+				D2188EAF7DE329E47BCD2A37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,6 +150,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A2774BE3D1EDC8B1616B8D0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExpandableLabel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2188EAF7DE329E47BCD2A37 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExpandableLabel/Pods-ExpandableLabel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B0D8A3F1F3AAA50004142A4 /* Sources */ = {
@@ -252,6 +314,7 @@
 		};
 		1B0D8A4D1F3AAA50004142A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D968C7B03A273DB93D6CD6DE /* Pods-ExpandableLabel.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -270,6 +333,7 @@
 		};
 		1B0D8A4E1F3AAA50004142A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D438C997147D4C732445AE18 /* Pods-ExpandableLabel.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
