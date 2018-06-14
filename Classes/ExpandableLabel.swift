@@ -24,7 +24,6 @@
 typealias LineIndexTuple = (line: CTLine, index: Int)
 
 import UIKit
-import ActiveLabel
 
 /**
  * The delegate of ExpandableLabel.
