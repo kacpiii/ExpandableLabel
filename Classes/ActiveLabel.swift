@@ -306,8 +306,8 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         var range = NSRange(location: 0, length: 0)
         var attributes = mutAttrString.attributes(at: 0, effectiveRange: &range)
         
-        attributes[NSAttributedStringKey.font] = font!
-        attributes[NSAttributedStringKey.foregroundColor] = textColor
+//        attributes[NSAttributedStringKey.font] = font!
+//        attributes[NSAttributedStringKey.foregroundColor] = textColor
         mutAttrString.addAttributes(attributes, range: range)
 
         attributes[NSAttributedStringKey.foregroundColor] = mentionColor
