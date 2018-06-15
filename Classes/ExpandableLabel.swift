@@ -39,7 +39,7 @@ public protocol ExpandableLabelDelegate: NSObjectProtocol {
 /**
  * ExpandableLabel
  */
-open class ExpandableLabel: ActiveLabel {
+open class ExpandableLabel: UILabel {
     
     public enum TextReplacementType {
         case character

@@ -6,6 +6,6 @@ target 'ExpandableLabel' do
   use_frameworks!
 
   # Pods for ExpandableLabel
-  pod 'ActiveLabel'
+#  pod 'ActiveLabel'
 
 end
